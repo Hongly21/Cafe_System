@@ -168,7 +168,7 @@ include('../../root/DataTable.php');
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Product Quantity</label>
-                        <input type="text" class="form-control" id="proquantityupdate" aria-describedby="emailHelp">
+                        <input type="hidden" class="form-control" id="proquantityupdate" aria-describedby="emailHelp">
                     </div>
 
                     <div class="mb-3">

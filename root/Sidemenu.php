@@ -20,31 +20,31 @@
             <input type="text" placeholder="Search menu..." class="form-control">
         </div>
         <ul class="list-unstyled components">
-           <li>
-                    <a href="../view/Dashboard/index.php" target="content">
-                        <i class="fa fa-home"></i>Dasborad
-                    </a>
-                </li>
+            <li>
+                <a href="../view/Dashboard/index.php" target="content">
+                    <i class="fa fa-home"></i>Dasborad
+                </a>
+            </li>
 
-                <!-- Master Set up -->
-                <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa-solid fa-list"></i><span lang="km">Menu</span>
-                    </a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="../view/Sales/index.php" target="content">Sales</a>
-                        </li>
-                        <li>
-                            <a href="../view/Product/index.php" target="content">Product</a>
-                        </li>
-                        <li>
-                            <a href="../view/Category/index.php" target="content">Category</a>
-                        </li>
-                        <li>
-                            <a href="../view/LeavePolicy/index.php" target="content">Leave Policy</a>
-                        </li>
-                        <li>
+            <!-- Master Set up -->
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa-solid fa-list"></i><span lang="km">Menu</span>
+                </a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="../view/Sales/index.php" target="content">Sales</a>
+                    </li>
+                    <li>
+                        <a href="../view/Product/index.php" target="content">Product</a>
+                    </li>
+                    <li>
+                        <a href="../view/Category/index.php" target="content">Category</a>
+                    </li>
+                    <li>
+                        <a href="../view/Inventory/index.php" target="content">Inventory</a>
+                    </li>
+                    <!--<li>
                             <a href="../view/Menu/index.php" target="content">General Settings</a>
                         </li>
                         <li>
@@ -55,27 +55,37 @@
                         </li>
                         <li>
                             <a href="../view/OTSetting/index.php" target="content">OT Setting</a>
-                        </li>
-                    </ul>
-                </li>
+                        </li> -->
+                </ul>
+            </li>
 
-                <!-- Employee -->
-                <li>
-                    <a href="#Order" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-users"></i><span lang="km">Employee</span>
-                    </a>
-                    <ul class="collapse list-unstyled" id="Order">
-                        <li>
-                            <a href="../view/StaffProfile/index.php" target="content">Staff Profile</a>
-                        </li>
-                        <li>
-                            <a href="../view/CareerHistory/index.php" target="content">Career History</a>
-                        </li>
-                    </ul>
-                </li>
+            <!-- Employee -->
+            <li>
+                <a href="#Order" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-users"></i><span lang="km">Employee</span>
+                </a>
+                <ul class="collapse list-unstyled" id="Order">
+                    <li>
+                        <a href="../view/Staff/index.php" target="content">Staff Profile</a>
+                    </li>
 
-                <!-- Self Service -->
-                <li>
+                </ul>
+            </li>
+            <!-- Supplies -->
+            <li>
+                <a href="#Orderw" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-users"></i><span lang="km">Supplies Setting</span>
+                </a>
+                <ul class="collapse list-unstyled" id="Orderw">
+                    <li>
+                        <a href="../view/Supplies/index.php" target="content">Stock</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!-- Self Service -->
+            <!-- <li>
                     <a href="#ESS" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fa fa-book"></i><span lang="km">Self Service</span>
                     </a>
@@ -87,58 +97,58 @@
                             <a href="../view/SSLeaveApproval/index.php" target="content">Leave Approval</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
-                <!-- Leave -->
-                <li>
-                    <a href="#Leave" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-users"></i><span lang="km">Leave </span>
-                    </a>
-                    <ul class="collapse list-unstyled" id="Leave">
-                        <li>
+            <!-- Leave -->
+            <li>
+                <a href="#Leave" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-users"></i><span lang="km">Leave </span>
+                </a>
+                <ul class="collapse list-unstyled" id="Leave">
+                    <!-- <li>
                             <a href="../view/LeaveBalance/index.php" target="content">Leave Balance</a>
-                        </li>
-                        <li>
-                            <a href="../view/LeaveRequest/index.php" target="content">Leave Request</a>
-                        </li>
-                        <li>
-                            <a href="../view/LeaveApproval/index.php" target="content">Leave Approval</a>
-                        </li>
-                    </ul>
-                </li>
+                        </li> -->
+                    <li>
+                        <a href="../view/LeaveRequest/index.php" target="content">Leave Request</a>
+                    </li>
+                    <li>
+                        <a href="../view/LeaveApproval/index.php" target="content">Leave Approval</a>
+                    </li>
+                </ul>
+            </li>
 
-                <!-- Payroll -->
-                <li>
-                    <a href="#User" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-money-bill"></i><span lang="km">Payroll</span>
-                    </a>
-                    <ul class="collapse list-unstyled" id="User">
-                        <li>
-                            <a href="../view/PROvertime/index.php" target="content">Overtime</a>
-                        </li>
-                        <li>
-                            <a href="../view/PRAllowance/index.php" target="content">Allowance</a>
-                        </li>
-                        <li>
-                            <a href="../view/PRBonus/index.php" target="content">Bonus</a>
-                        </li>
-                        <li>
-                            <a href="../view/PRDeduction/index.php" target="content">Deduction</a>
-                        </li>
-                        <li>
-                            <a href="../view/PRGenSalary/generatesalary.php" target="content">Generate Salary</a>
-                        </li>
-                        <li>
-                            <a href="../view/PRPayDetail/paydetail.php" target="content">Pay Detail</a>
-                        </li>
-                        <li>
-                            <a href="../view/PRApproveSalary/index.php" target="content">Salary Approval</a>
-                        </li>
-                    </ul>
-                </li>
+            <!-- Payroll -->
+            <li>
+                <a href="#User" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-money-bill"></i><span lang="km">Payroll</span>
+                </a>
+                <ul class="collapse list-unstyled" id="User">
+                    <li>
+                        <a href="../view/PROvertime/index.php" target="content">Overtime</a>
+                    </li>
+                    <li>
+                        <a href="../view/PRAllowance/index.php" target="content">Allowance</a>
+                    </li>
+                    <li>
+                        <a href="../view/PRBonus/index.php" target="content">Bonus</a>
+                    </li>
+                    <li>
+                        <a href="../view/PRDeduction/index.php" target="content">Deduction</a>
+                    </li>
+                    <li>
+                        <a href="../view/PRGenSalary/generatesalary.php" target="content">Generate Salary</a>
+                    </li>
+                    <li>
+                        <a href="../view/PRPayDetail/paydetail.php" target="content">Pay Detail</a>
+                    </li>
+                    <li>
+                        <a href="../view/PRApproveSalary/index.php" target="content">Salary Approval</a>
+                    </li>
+                </ul>
+            </li>
 
-                <!-- Recruitment -->
-                <li>
+            <!-- Recruitment -->
+            <!-- <li>
                     <a href="#Recruite" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fa fa-book"></i><span lang="km">Recruitment</span>
                     </a>
@@ -150,19 +160,19 @@
                             <a href="../view/RecuitmentOnboarding/index.php" target="content">Onboarding</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
-                <!-- Report -->
-                <li>
-                    <a href="#Report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-book"></i><span lang="km">Report</span>
-                    </a>
-                    <ul class="collapse list-unstyled" id="Report">
-                        <li>
-                            <a href="../view/Report/EmployeeInOut/index.php" target="content">Employee InOut</a>
-                        </li>
-                        <li>
-                            <a href="../view/Report/EmployeeFamily/index.php" target="content">Employee's Family</a>
+            <!-- Report -->
+            <li>
+                <a href="#Report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-book"></i><span lang="km">Report</span>
+                </a>
+                <ul class="collapse list-unstyled" id="Report">
+                    <li>
+                        <a href="../view/Report/index.php" target="content">Report</a>
+                    </li>
+                    <li>
+                        <!-- <a href="../view/Report/EmployeeFamily/index.php" target="content">Employee's Family</a>
                         </li>
                          <li>
                             <a href="../view/Report/ReportMonthlyPay/index.php" target="content">Monthly Salary Details</a>
@@ -175,9 +185,9 @@
                         </li>
                         <li>
                             <a href="../view/Report/LeaveReport/index.php" target="content">Leave Summary</a>
-                        </li>
-                    </ul>
-                </li>
+                        </li> -->
+                </ul>
+            </li>
 
         </ul>
     </div>

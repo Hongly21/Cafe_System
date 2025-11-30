@@ -226,11 +226,11 @@ include('../../root/Header.php');
                                             <small class="text-muted">
                                                 <?php
                                                 if ($row2['StockQty'] > 0) {
-                                                    echo 'In Stock' . ' <br>';
-                                                    echo $row2['Price'];
+                                                    echo '<span  class="badge bg-info">Out Stock</span>' . ' <br>';
+                                                    echo '$ ' . $row2['Price'];
                                                 } else {
-                                                    echo 'Out of Stock' . '<br>';
-                                                    echo $row2['Price'];
+                                                    echo '<span  class="badge bg-danger">Out Stock</span>' . '<br>';
+                                                    echo '$ ' . $row2['Price'];
                                                 } ?></small>
                                         </div>
                                     </div>
@@ -345,7 +345,7 @@ include('../../root/Header.php');
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button> -->
                 </div>
             </div>
 
@@ -417,7 +417,7 @@ include('../../root/Header.php');
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary cancel_btn">Cancel</button>
-                    <button data-bs-toggle="modal" data-bs-target="#receiptModal">Print Receipt</button>
+                    <!-- <button data-bs-toggle="modal" data-bs-target="#receiptModal">Print Receipt</button> -->
                 </div>
             </div>
         </div>
@@ -664,8 +664,6 @@ include('../../root/Header.php');
             }
 
         });
-
-
 
 
 

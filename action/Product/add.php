@@ -25,6 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     (NULL, '$category', '$name', '$price', '$qty', '$imageName');";
     $run = $con->query($sql);
     if ($run) {
+        $productID = $con->insert_id;
+
+
+        $sqlinventory = "INSERT INTO `inventory` (`InventoryID`, `ProductID`, `Quantity`, `ReorderLevel`) 
+        VALUES (NULL, '$productID', '$qty', '5');";
+
+        $runinventory = $con->query($sqlinventory);
         echo "success";
     } else {
         echo "error";

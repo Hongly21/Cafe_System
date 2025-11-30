@@ -38,6 +38,10 @@ foreach ($cart as $item) {
                   SET StockQty = StockQty - $qty
                   WHERE ProductID = '$proid'";
     $con->query($sqlupdate);
+
+    //update inventory stock
+    $sqlinventory = "UPDATE inventory SET Quantity = Quantity-$qty WHERE ProductID='$proid'";
+    $con->query($sqlinventory);
 }
 
 
