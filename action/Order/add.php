@@ -4,10 +4,11 @@ include('../../Config/conect.php');
 $cart = json_decode($_POST['cartData'], true);
 $cash = $_POST['cash'];
 $totalamount = $_POST['totalamount'];
+$ordertype = $_POST['ordertype'];
 
 // 1️ INSERT INTO ORDERS (insert once only)
 $sqlorder = "INSERT INTO orders (OrderDate, TableNo, Status, TotalAmount, PaymentType, UserID)
-             VALUES (NOW(), 'Delivery', 'Pending', '$totalamount', '$cash', 1)";
+             VALUES (NOW(), '$ordertype', 'Pending', '$totalamount', '$cash', 1)";
 
 $runorder = $con->query($sqlorder);
 

@@ -5,13 +5,8 @@ include('../../root/DataTable.php');
 
 ?>
 
-<h3 class="text-center" style="margin-top: 15px;">Category of Product</h3>
-<!-- <div class="container">
-    <button data-bs-toggle="modal" data-bs-target="#exampleModal"
-        class="btn btn-primary btn-sm" style="margin-bottom: 10px;">
-        <i style="margin-right: 5px;" class="fas fa-plus"></i>Add Category
-    </button>
-</div> -->
+<h3 class="text-center" style="margin-top: 15px;"> Inventory</h3>
+
 
 <div class="container">
     <div class="row">

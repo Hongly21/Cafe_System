@@ -50,8 +50,7 @@ include('../../root/DataTable.php');
                                 <button type="button"
                                     data-name="<?php echo $row['Name'] ?>"
                                     data-qty="<?php echo $row['Quantity'] ?>"
-                                    class="restock" data-bs-toggle="modal" data-bs-target="#purchasesModal">Restock</button>
-                                <button>Edit</button>
+                                    class="btn btn-sm btn-primary restock" data-bs-toggle="modal" data-bs-target="#purchasesModal">Restock</button>
                             </td>
                         </tr>
                     <?php
@@ -206,13 +205,18 @@ include('../../root/DataTable.php');
 
         })
 
-        $('.restock').click(function() {
-            var proname = $(this).data('name');
-            var qty = $(this).data('qty');
+        // When restock button is clicked
+        $(document).on("click", ".restock", function() {
+            let productName = $(this).data("name");
+            let qty = $(this).data("qty");
 
-            $('#lineQty').val(qty);
-            $('#lineProduct').val(proname);
+            // Set values inside modal
+            $("#lineProduct option").filter(function() {
+                return $(this).text() === productName;
+            }).prop("selected", true);
 
-        })
+            $("#lineQty").val(qty);
+        });
+
     })
 </script>

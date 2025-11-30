@@ -135,13 +135,14 @@ include('../../Config/conect.php');
                             <i class="fas fa-toggle-on me-2"></i>From Manager
                         </label>
                         <select class="form-select" id="manager" required>
-                            <?php $sql = "SELECT * FROM employees WHERE Role='Manager'";
+                            <option value="">Select Manager</option>
+
+                            <?php $sql = "SELECT * FROM users WHERE Role='Manager'";
                             $run = $con->query($sql);
 
                             while ($row = $run->fetch_assoc()) {
                             ?>
-                                <option>Select Manager</option>
-                                <option value="<?php echo $row['EmpID'] ?>"><?php echo $row['Name'] ?></option>
+                                <option value="<?php echo $row['UserID'] ?>"><?php echo $row['Username'] ?></option>
                             <?php
                             }
 

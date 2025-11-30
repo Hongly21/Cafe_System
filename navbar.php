@@ -106,7 +106,7 @@ include("root/header.php");
                         <option value="en">English</option>
                         <option value="KH">Khmer</option>
                     </select>
-                    <a href="view/Login/logout_confirm.php" target="content" class="nav-link">
+                    <a href="view/Dashboard/logout.php" target="content" class="nav-link">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </div>

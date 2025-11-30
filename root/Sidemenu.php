@@ -3,13 +3,45 @@
 
 <head>
     <?php
-    include("header.php");
+    include("Header.php");
     ?>
     <!-- Google Fonts - Professional font combination -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Noto+Sans+Khmer:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="Style/sidemenu.css">
 </head>
+<style>
+    body {
+        font-family: 'Libertinus Sans', sans-serif;
+    }
+
+    span {
+        font-family: 'Libertinus Sans', sans-serif;
+        font-size: 19px;
+    }
+
+    #homeSubmenu li a {
+        font-size: 18px;
+    }
+
+    #Order li a {
+        font-size: 18px;
+    }
+
+    #Leave li a {
+        font-size: 18px;
+    }
+
+    #User li a {
+        font-size: 18px;
+    }
+
+    #Report li a {
+        font-size: 18px;
+    }
+    #Orderw li a {
+        font-size: 18px;}
+</style>
 
 <body>
     <div class="menu">
@@ -22,14 +54,14 @@
         <ul class="list-unstyled components">
             <li>
                 <a href="../view/Dashboard/index.php" target="content">
-                    <i class="fa fa-home"></i>Dasborad
+                    <i class="fa fa-home"></i><span>Dashboard</span>
                 </a>
             </li>
 
             <!-- Master Set up -->
             <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fa-solid fa-list"></i><span lang="km">Menu</span>
+                    <i class="fa-solid fa-list"></i><span>Menu</span>
                 </a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
@@ -62,7 +94,7 @@
             <!-- Employee -->
             <li>
                 <a href="#Order" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fa fa-users"></i><span lang="km">Employee</span>
+                    <i class="fa fa-users"></i><span>Employee</span>
                 </a>
                 <ul class="collapse list-unstyled" id="Order">
                     <li>
@@ -74,7 +106,7 @@
             <!-- Supplies -->
             <li>
                 <a href="#Orderw" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fa fa-users"></i><span lang="km">Supplies Setting</span>
+                    <i class="fa fa-users"></i><span>Supplies Setting</span>
                 </a>
                 <ul class="collapse list-unstyled" id="Orderw">
                     <li>
@@ -100,14 +132,14 @@
                 </li> -->
 
             <!-- Leave -->
-            <li>
+            <!-- <li>
                 <a href="#Leave" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fa fa-users"></i><span lang="km">Leave </span>
+                    <i class="fa fa-users"></i><span>Leave </span>
                 </a>
                 <ul class="collapse list-unstyled" id="Leave">
-                    <!-- <li>
+                    <li>
                             <a href="../view/LeaveBalance/index.php" target="content">Leave Balance</a>
-                        </li> -->
+                        </li>
                     <li>
                         <a href="../view/LeaveRequest/index.php" target="content">Leave Request</a>
                     </li>
@@ -115,12 +147,12 @@
                         <a href="../view/LeaveApproval/index.php" target="content">Leave Approval</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <!-- Payroll -->
-            <li>
+            <!-- <li>
                 <a href="#User" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fa fa-money-bill"></i><span lang="km">Payroll</span>
+                    <i class="fa fa-money-bill"></i><span>Payroll</span>
                 </a>
                 <ul class="collapse list-unstyled" id="User">
                     <li>
@@ -145,7 +177,7 @@
                         <a href="../view/PRApproveSalary/index.php" target="content">Salary Approval</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <!-- Recruitment -->
             <!-- <li>
@@ -165,7 +197,7 @@
             <!-- Report -->
             <li>
                 <a href="#Report" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <i class="fa fa-book"></i><span lang="km">Report</span>
+                    <i class="fa fa-book"></i><span>Report</span>
                 </a>
                 <ul class="collapse list-unstyled" id="Report">
                     <li>

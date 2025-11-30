@@ -36,3 +36,16 @@
      <!-- Add SweetAlert2 CSS and JS -->
      <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+
+     <!-- Google Fonts - Professional font combination -->
+     <!-- Custom CSS -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<style>
+     body {
+          font-family: 'Libertinus Sans', sans-serif;
+     }
+</style>

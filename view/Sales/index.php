@@ -14,7 +14,7 @@ include('../../root/Header.php');
         padding: 15px;
         color: white;
         text-align: center;
-        font-size: 20px;
+        font-size: 25px;
         font-weight: bold;
     }
 
@@ -167,7 +167,7 @@ include('../../root/Header.php');
 
         <!-- menu tab -->
         <section class="container py-5 menu-section">
-            <h2 class="mb-4 text-center fw-bold">MENU</h2>
+            <h2 class="mb-4 text-center fw-bold">MENU TAB ALL PRODUCT</h2>
 
             <ul class="nav nav-pills justify-content-center mb-4 menu-tabs" id="coffeeMenuTabs" role="tablist">
                 <!-- all product -->
@@ -219,14 +219,14 @@ include('../../root/Header.php');
                                                             ?>"
 
                                             src="../../assets/images/<?php echo $row2['Image'] ?>"
-                                            style="object-fit: contain; width: 200px; height: 200px;"
+                                            style="object-fit: contain; width: 185px; height: 200px;"
                                             class="card-img-top mx-auto product-img" alt="Coffee Special">
                                         <div class="card-body p-1">
                                             <p class="card-text mb-0 fw-bold"><?php echo $row2['Name'] ?></p>
                                             <small class="text-muted">
                                                 <?php
                                                 if ($row2['StockQty'] > 0) {
-                                                    echo '<span  class="badge bg-info">Out Stock</span>' . ' <br>';
+                                                    echo '<span  class="badge bg-info">In Stock</span>' . ' <br>';
                                                     echo '$ ' . $row2['Price'];
                                                 } else {
                                                     echo '<span  class="badge bg-danger">Out Stock</span>' . '<br>';
@@ -298,7 +298,7 @@ include('../../root/Header.php');
 
 
     <!-- Floating Cart Button -->
-    <button class="cart-btn btn-view-cart" data-bs-toggle="modal" data-bs-target="#Cartmodal">🛒 View Cart (<span
+    <button class="cart-btn btn-view-cart" data-bs-toggle="modal" data-bs-target="#Cartmodal"><i style="margin-right:5px;" class="fa-solid fa-cart-arrow-down"></i> View Cart (<span
             id="cart-count">0</span>)</button>
 
 
@@ -333,12 +333,8 @@ include('../../root/Header.php');
                             </tbody>
 
                         </table>
-                        <!-- <button class="btn btn-success w-100 fw-bold pay-btn" data-bs-toggle="modal"
-                            data-bs-target="#paymentModal">
-                            Pay Now (Billing) <i class="fas fa-arrow-right"></i>
-                        </button> -->
                         <button class="btn btn-success w-100 fw-bold pay-btn">
-                            Pay Now (Billing) <i class="fas fa-arrow-right"></i>
+                            Pay Now <i style="margin-left: 5px; font-size: 20px;" class="fa-brands fa-amazon-pay"></i>
                         </button>
 
                     </div>
@@ -527,6 +523,8 @@ include('../../root/Header.php');
                             <!-- Receipt Info -->
                             <p>Receipt No: <strong id="receiptNumber">1025</strong></p>
                             <p>Date: <span id="receiptDate">2025-01-15</span> Cashier: <span id="cashierName">John</span></p>
+                            <!-- order type or table no -->
+                            <p>Order Type: <span id="orderType">Dine-in</span></p>
 
 
 
@@ -703,7 +701,20 @@ include('../../root/Header.php');
 
                 $('.cart_item').append(`
                     <tr>
-                        <td colspan="4" class="text-end fw-bold">Total:</td>
+                    <td colspan="2">
+                       <select id="ordertype" class="form-select" style="width: 210px;">
+                            <option value="">Choose Method order</option>
+                            <option value="Dine-in">Dine-in</option>
+                            <option value="Delivery">Delivery</option>
+                            <option value="Takeaway">Takeaway</option>
+
+                        </select>
+                    
+                    </td> 
+               
+                        <td colspan="2" class="text-end fw-bold">
+                        Total:
+                        </td>
                         <td>
                         <input class="form-control" disabled type="text" id="totalamount" value=" ${total.toFixed(2)}">
                         </td>
@@ -747,12 +758,14 @@ include('../../root/Header.php');
             var totalamount = $('#totalamount').val();
             let cashier = "Hongly";
             let date = new Date();
+            let ordertype = $('#ordertype').val();
             $.ajax({
                 url: "../../action/Order/add.php",
                 type: "POST",
                 data: {
                     cartData: JSON.stringify(cart),
                     cash: cash,
+                    ordertype: ordertype,
                     totalamount: totalamount
                 },
                 success: function(response) {
@@ -772,6 +785,7 @@ include('../../root/Header.php');
 
                             $('#paymentMethod').text('Payment Method: ' + cash);
                             $('#paymentMethod').css('color', 'green');
+                            $('#orderType').text(ordertype);
                             $('#receiptDate').text(date.toLocaleString());
                             $('#cashierName').text(cashier);
 
@@ -836,6 +850,7 @@ include('../../root/Header.php');
             var totalamount = $('#totalamount').val();
             let cashier = "Hongly";
             let date = new Date();
+            let ordertype = $('#ordertype').val();
 
 
             Swal.fire({
@@ -864,6 +879,8 @@ include('../../root/Header.php');
                             data: {
                                 cartData: JSON.stringify(cart),
                                 cash: cash,
+                                ordertype: ordertype,
+
                                 totalamount: totalamount
                             },
                             success: function(response) {
@@ -879,6 +896,7 @@ include('../../root/Header.php');
                                         $('#paymentMethod').text('Payment Method: ' + cash);
                                         $('#paymentMethod').css('color', 'green');
                                         $('#receiptDate').text(date.toLocaleString());
+                                        $('#orderType').text(ordertype);
                                         $('#cashierName').text(cashier);
                                         $(document).click(function() {
                                             location.reload();
@@ -954,7 +972,9 @@ include('../../root/Header.php');
             var cash = $('#card').val();
             var totalamount = $('#totalamount').val();
             let cashier = "Hongly";
+            let ordertype = $('#ordertype').val();
             let date = new Date();
+
 
             $.ajax({
                 url: "../../action/Order/add.php",
@@ -962,6 +982,7 @@ include('../../root/Header.php');
                 data: {
                     cartData: JSON.stringify(cart),
                     cash: cash,
+                    ordertype: ordertype,
                     totalamount: totalamount
                 },
                 success: function(response) {
@@ -978,6 +999,7 @@ include('../../root/Header.php');
                             $('#paymentMethod').css('color', 'green');
                             $('#receiptDate').text(date.toLocaleString());
                             $('#cashierName').text(cashier);
+                            $('#orderType').text(ordertype);
                             $(document).click(function() {
                                 location.reload();
                             });
