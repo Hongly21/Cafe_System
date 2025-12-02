@@ -16,7 +16,7 @@ include('../../root/DataTable.php');
                 </div>
             </div>
 
-            <table class="table table-hover align-middle">
+            <table id="example" class="table table-hover align-middle">
                 <thead class="table-light">
                     <tr>
                         <th>Product</th>
@@ -50,7 +50,26 @@ include('../../root/DataTable.php');
                                 <button type="button"
                                     data-name="<?php echo $row['Name'] ?>"
                                     data-qty="<?php echo $row['Quantity'] ?>"
-                                    class="btn btn-sm btn-primary restock" data-bs-toggle="modal" data-bs-target="#purchasesModal">Restock</button>
+                                    class="btn btn-sm btn-primary restock" data-bs-toggle="modal" data-bs-target="#purchasesModal">Restock
+                                </button>
+                                <?php
+                                $Quantity = $row['Quantity'];
+                                $ReorderLevel = $row['ReorderLevel'];
+                                //<=reorder level but >0
+                                if ($Quantity <= $ReorderLevel && $Quantity > 0) {
+                                ?>
+                                    <span style="float: right;" class="badge bg-warning">Low Stock</span> <?php
+                                                                                                        } else if ($Quantity >= $ReorderLevel) {
+                                                                                                            ?>
+                                    <span style="float: right;" class="badge bg-info">Normal Stock</span> <?php
+
+                                                                                                        } else if ($Quantity == 0) {
+                                                                                                            ?>
+                                    <span style="float: right;" class="badge bg-danger">Out Stock</span> <?php
+
+                                                                                                        }
+                                                                                                            ?>
+
                             </td>
                         </tr>
                     <?php

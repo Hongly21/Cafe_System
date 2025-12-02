@@ -163,7 +163,7 @@ include('../../root/Header.php');
     <div class="container mt-3">
 
         <!-- Search -->
-        <input type="text" class="form-control mb-3" placeholder="Search items...">
+        <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search items...">
 
         <!-- menu tab -->
         <section class="container py-5 menu-section">
@@ -265,16 +265,31 @@ include('../../root/Header.php');
                                         <div class="card product-card p-2 drink-item">
                                             <img data-bs-toggle="modal" data-bs-target="#itemModal"
                                                 data-name="<?php echo $row2['Name'] ?>"
+                                                data-proid="<?php echo $row2['ProductID'] ?>"
                                                 data-price="<?php echo $row2['Price'] ?>"
                                                 data-image="<?php echo $row2['Image'] ?>"
-                                                data-category="<?php echo $row1['Name'] ?>"
+                                                data-quantity="<?php echo $row2['StockQty'] ?>"
+                                                data-category="<?php $categoryId = $row2['CategoryID'];
+                                                                $slq3 = "SELECT Name FROM categories WHERE CategoryID=$categoryId";
+                                                                $result3 = $con->query($slq3);
+                                                                $row3 = $result3->fetch_assoc();
+                                                                echo $row3['Name'];
+                                                                ?>"
 
                                                 src="../../assets/images/<?php echo $row2['Image'] ?>"
-                                                style="object-fit: contain; width: 200px; height: 200px;"
+                                                style="object-fit: contain; width: 185px; height: 200px;"
                                                 class="card-img-top mx-auto product-img" alt="Coffee Special">
                                             <div class="card-body p-1">
                                                 <p class="card-text mb-0 fw-bold"><?php echo $row2['Name'] ?></p>
-                                                <small class="text-muted">$<?php echo $row2['Price'] ?></small>
+                                                <small class="text-muted">
+                                                    <?php
+                                                    if ($row2['StockQty'] > 0) {
+                                                        echo '<span  class="badge bg-info">In Stock</span>' . ' <br>';
+                                                        echo '$ ' . $row2['Price'];
+                                                    } else {
+                                                        echo '<span  class="badge bg-danger">Out Stock</span>' . '<br>';
+                                                        echo '$ ' . $row2['Price'];
+                                                    } ?></small>
                                             </div>
                                         </div>
                                     </div>
@@ -756,7 +771,7 @@ include('../../root/Header.php');
         $('.btncloseqr').click(function() {
             var cash = 'QRCode';
             var totalamount = $('#totalamount').val();
-            let cashier = "Hongly";
+            let cashier = "Manager";
             let date = new Date();
             let ordertype = $('#ordertype').val();
             $.ajax({
@@ -821,6 +836,14 @@ include('../../root/Header.php');
 
                             $('#paymentModal').modal('hide');
                         })
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Order not added',
+                            icon: 'error',
+                            timer: 1500,
+                            showConfirmButton: false
+                        })
                     }
 
 
@@ -848,7 +871,7 @@ include('../../root/Header.php');
             }
             var cash = $('#cash').val();
             var totalamount = $('#totalamount').val();
-            let cashier = "Hongly";
+            let cashier = "Manager";
             let date = new Date();
             let ordertype = $('#ordertype').val();
 
@@ -861,91 +884,109 @@ include('../../root/Header.php');
                 showCancelButton: true,
                 confirmButtonText: "Confirm",
             }).then((result) => {
-                if (result.isConfirmed) {
-                    let cashPaid = parseFloat(result.value);
-                    if (result.value < totalamount) {
-                        Swal.fire({
-                            title: 'Oops!',
-                            text: 'Cash is not enough',
-                            icon: 'error',
-                            timer: 1500,
-                            showConfirmButton: false
-                        })
-                        return;
-                    } else if (result.value > totalamount) {
-                        $.ajax({
-                            url: "../../action/Order/add.php",
-                            type: "POST",
-                            data: {
-                                cartData: JSON.stringify(cart),
-                                cash: cash,
-                                ordertype: ordertype,
 
-                                totalamount: totalamount
-                            },
-                            success: function(response) {
-                                if (response == 'Success') {
-                                    Swal.fire({
-                                        title: 'Success!',
-                                        text: 'Order added successfully pay by Cash',
-                                        icon: 'success',
-                                        timer: 1500,
-                                        showConfirmButton: false
-                                    }).then(function() {
-                                        $('#receiptModal').modal('show');
-                                        $('#paymentMethod').text('Payment Method: ' + cash);
-                                        $('#paymentMethod').css('color', 'green');
-                                        $('#receiptDate').text(date.toLocaleString());
-                                        $('#orderType').text(ordertype);
-                                        $('#cashierName').text(cashier);
-                                        $(document).click(function() {
-                                            location.reload();
-                                        });
+                if (!result.isConfirmed) return; 
 
-                                        let tableitem = []; // create an empty array
-                                        // loop through the cart and add each item to the table
-                                        cart.forEach(function(item) {
-                                            tableitem.push(`
-                                            <tr>
-                                                    <td class="item-name">${item.name} (${item.sugar}) (${item.qty}×)</td>
-                                                    <td class="item-price right">$ ${(item.price * item.qty).toFixed(2)}</td>
-                                            </tr>
-                                            `);
-                                        });
-                                        $('#itemTable').html(tableitem.join(''));
+                let cashPaid = parseFloat(result.value);
 
-
-
-                                        //sub total
-                                        let subtotal = 0;
-                                        cart.forEach(function(item) {
-                                            subtotal += item.price * item.qty
-                                        })
-
-                                        tax = subtotal * 0.1
-                                        $('#tax').text('$ ' + tax.toFixed(2));
-                                        $('#subtotal').text('$ ' + subtotal.toFixed(2));
-
-                                        let total = subtotal + tax;
-                                        $('#total').text('$ ' + total.toFixed(2));
-
-                                        $('#cashPaid').text('$ ' + cashPaid.toFixed(2));
-                                        $('#change').text('$ ' + (cashPaid - total).toFixed(2));
-
-                                        $('#paymentModal').modal('hide');
-                                    })
-                                }
-
-
-                            }
-                        });
-
-
-                    }
-
-
+                if (isNaN(cashPaid) || cashPaid <= 0) {
+                    Swal.fire({
+                        title: "Invalid Input",
+                        text: "Please enter a valid number.",
+                        icon: "error",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    return;
                 }
-            })
+
+                if (cashPaid < totalamount) {
+                    Swal.fire({
+                        title: "Oops!",
+                        text: "Cash is not enough",
+                        icon: "error",
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                    return;
+                }
+
+                $.ajax({
+                    url: "../../action/Order/add.php",
+                    type: "POST",
+                    data: {
+                        cartData: JSON.stringify(cart),
+                        cash: cashPaid, 
+                        ordertype: ordertype,
+                        totalamount: totalamount
+                    },
+
+                    success: function(response) {
+                        if (response == 'Success') {
+
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Order added successfully pay by Cash',
+                                icon: 'success',
+                                timer: 1500,
+                                showConfirmButton: false
+                            }).then(function() {
+
+                                // Show receipt
+                                $('#receiptModal').modal('show');
+                                $('#paymentMethod').text('Payment Method: Cash');
+                                $('#paymentMethod').css('color', 'green');
+                                $('#receiptDate').text(date.toLocaleString());
+                                $('#orderType').text(ordertype);
+                                $('#cashierName').text(cashier);
+
+                                $(document).click(function() {
+                                    location.reload();
+                                });
+
+                                let tableitem = [];
+                                cart.forEach(function(item) {
+                                    tableitem.push(`
+                            <tr>
+                                <td class="item-name">${item.name} (${item.sugar}) (${item.qty}×)</td>
+                                <td class="item-price right">$ ${(item.price * item.qty).toFixed(2)}</td>
+                            </tr>
+                        `);
+                                });
+                                $('#itemTable').html(tableitem.join(''));
+
+                                let subtotal = 0;
+                                cart.forEach(function(item) {
+                                    subtotal += item.price * item.qty;
+                                });
+
+                                tax = subtotal * 0.1;
+
+                                $('#tax').text('$ ' + tax.toFixed(2));
+                                $('#subtotal').text('$ ' + subtotal.toFixed(2));
+
+                                let total = subtotal + tax;
+                                $('#total').text('$ ' + total.toFixed(2));
+
+                                $('#cashPaid').text('$ ' + cashPaid.toFixed(2));
+                                $('#change').text('$ ' + (cashPaid - total).toFixed(2));
+
+                                $('#paymentModal').modal('hide');
+                            });
+
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "There was an error processing your order.",
+                                icon: "error",
+                                timer: 1500,
+                                showConfirmButton: false
+                            });
+                        }
+                    }
+                });
+
+            });
 
 
 
@@ -971,7 +1012,7 @@ include('../../root/Header.php');
             }
             var cash = $('#card').val();
             var totalamount = $('#totalamount').val();
-            let cashier = "Hongly";
+            let cashier = "Manager";
             let ordertype = $('#ordertype').val();
             let date = new Date();
 
@@ -1036,6 +1077,15 @@ include('../../root/Header.php');
 
                             $('#paymentModal').modal('hide');
                         })
+                    } else {
+
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'There was an error processing your order.',
+                            icon: 'error',
+                            timer: 1500,
+                            showConfirmButton: false
+                        });
                     }
 
 
@@ -1073,6 +1123,14 @@ include('../../root/Header.php');
 
 
         //====================================================
+
+        //search product 
+        $('#searchInput').on('keyup', function() {
+            var value = $(this).val().toLowerCase();
+            $('.drink-item').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
 
 
         //view detail

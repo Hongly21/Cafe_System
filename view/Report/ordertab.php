@@ -1,9 +1,12 @@
 <?php
 include('../../root/Header.php');
 include('../../Config/conect.php');
+include('../../root/DataTable.php');
+
 
 
 ?>
+<!-- data table -->
 <div class="container">
     <div class="row">
         <div class="col-12">

@@ -8,7 +8,7 @@ $ordertype = $_POST['ordertype'];
 
 // 1️ INSERT INTO ORDERS (insert once only)
 $sqlorder = "INSERT INTO orders (OrderDate, TableNo, Status, TotalAmount, PaymentType, UserID)
-             VALUES (NOW(), '$ordertype', 'Pending', '$totalamount', '$cash', 1)";
+             VALUES (NOW(), '$ordertype', 'Done', '$totalamount', '$cash', 15)";
 
 $runorder = $con->query($sqlorder);
 

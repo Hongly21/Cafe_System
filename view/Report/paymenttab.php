@@ -1,6 +1,8 @@
 <?php
 include('../../root/Header.php');
 include('../../Config/conect.php');
+include('../../root/DataTable.php');
+
 
 
 ?>

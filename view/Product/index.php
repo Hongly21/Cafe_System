@@ -45,10 +45,10 @@ include('../../root/DataTable.php');
                                                 <td>$ <?php echo $row['Price'] ?></td>
                                                 <td><?php echo $row['StockQty'] ?></td>
                                                 <td>
-                                                    <img src="../../assets/images/<?php echo $row['Image'] ?>" style="width: 60px; height: 60px; border-radius: 50%; object-fit: contain;">
+                                                    <img src="../../assets/images/<?php echo $row['Image'] ?>" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                                                 </td>
                                                 <td>
-                                                    <button data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-primary btn-sm editbtn"
+                                                    <button type="button" data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-primary btn-sm editbtn"
                                                         data-id="<?php echo $row['ProductID'] ?>"
                                                         data-name="<?php echo $row['Name'] ?>"
                                                         data-price="<?php echo $row['Price'] ?>"
@@ -86,7 +86,7 @@ include('../../root/DataTable.php');
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Product Name</label>
                         <input type="text" class="form-control" id="proname" aria-describedby="emailHelp">
@@ -117,7 +117,7 @@ include('../../root/DataTable.php');
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Product Image</label>
-                        <input type="file" class="form-control" id="proimage" aria-describedby="emailHelp">
+                        <input type="file" class="form-control" accept="image/*" id="proimage" aria-describedby="emailHelp">
                     </div>
                 </form>
             </div>
@@ -238,7 +238,7 @@ include('../../root/DataTable.php');
         });
 
 
-        $('.editbtn').click(function() {
+        $(document).on('click', '.editbtn', function() {
             var id = $(this).data('id');
             var name = $(this).data('name');
             var price = $(this).data('price');
@@ -246,16 +246,15 @@ include('../../root/DataTable.php');
             var image = $(this).data('image');
             var category = $(this).data('category');
 
-            // Set values to modal fields
             $('#idupdate').val(id);
             $('#pronameupdate').val(name);
             $('#propriceupdate').val(price);
             $('#proquantityupdate').val(quantity);
             $('#category_idupdate').val(category);
 
-            // Set current image preview
             $('#newImagePreview').attr('src', '../../assets/images/' + image);
-        })
+        });
+
 
         $('.btn_update_product').click(function() {
             var formData = new FormData();

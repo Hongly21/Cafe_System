@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $imageName = $_FILES['product_image']['name'];
         $tempPath  = $_FILES['product_image']['tmp_name'];
-        $uploadDir = "../../assets/images";
+        $uploadDir = "../../assets/images/";
 
 
         move_uploaded_file($tempPath, $uploadDir . $imageName);
