@@ -526,9 +526,9 @@ $userid = $rowid['UserID'];
                     <body>
                         <div class="receipt">
                             <!-- Inside .receipt -->
-                            <h2 id="cafeName">Café House</h2>
-                            <p id="cafeAddress">#12, Phnom Penh, Cambodia</p>
-                            <p id="cafePhone">Tel: 012-345-678</p>
+                            <h2 id="cafeName">Hongly Cafe</h2>
+                            <p id="cafeAddress">#Phnom Penh, Cambodia</p>
+                            <p id="cafePhone">Tel: 0965429290</p>
 
                             <div class="line"></div>
 
