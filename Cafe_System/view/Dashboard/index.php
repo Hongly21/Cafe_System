@@ -1,5 +1,6 @@
 <?php
 include '../../Config/conect.php';
+include '../../root/Header.php';
 
 $products = $con->query("SELECT COUNT(*) AS total FROM products")->fetch_assoc()['total'];
 $categories = $con->query("SELECT COUNT(*) AS total FROM categories")->fetch_assoc()['total'];
